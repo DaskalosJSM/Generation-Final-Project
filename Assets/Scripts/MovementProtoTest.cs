@@ -6,6 +6,7 @@ public class MovementProtoTest : MonoBehaviour
 {
     private float horizontalInput;
     private float verticalInput;
+    public float rotationSpeed;
 
     public float speed;
     // Update is called once per frame
@@ -19,11 +20,11 @@ public class MovementProtoTest : MonoBehaviour
         // Input
         if (horizontalInput != 0)
         {
-            transform.Translate(Vector3.right * Time.deltaTime * horizontalInput * speed);
+            this.transform.RotateAround(this.transform.position, Vector3.up, horizontalInput * rotationSpeed);
         }
         if (verticalInput != 0)
         {
-            transform.Translate(Vector3.forward * Time.deltaTime * verticalInput * speed);
+            transform.Translate(Vector3.forward * Time.deltaTime * speed * verticalInput, this.transform);
         }
     }
 }
