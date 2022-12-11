@@ -8,25 +8,20 @@ public class EnemyStats : MonoBehaviour
     public PlayerStats player;
 
     [Header("Enemy Stats")]
+    [Range(0.0f, 100)]
     public float health ;
     public bool RangeEnemy;
-
-    [Range(0.0f, 100)]
-    public float CurrentHealth;
 
     [Header("Attacking")]
     public float timeBetweenAttacks;
     public bool alreadyAttacked;
     public GameObject hitBox;
-    public int damagePlayer;
+    public float damagePlayer;
+    public GameObject projectile;
 
     private void Awake()
     {
         player = GameObject.Find("Player").GetComponent<PlayerStats>();
-    }
-    private void Update()
-    {
-        CurrentHealth = health;
     }
     public void Attack()
 
@@ -72,8 +67,7 @@ public class EnemyStats : MonoBehaviour
     }
     public void Shoot()
     {
-        // TODO: code de los proyectiles
-        //Instantiate(projectile, FireStart.position, FireStart.rotation);
+        Instantiate(projectile, this.transform.position, this.transform.rotation);
     }
     public void MeeleEnemyAttack()
     {

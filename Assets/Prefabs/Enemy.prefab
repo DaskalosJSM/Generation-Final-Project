@@ -185,11 +185,12 @@ MonoBehaviour:
   player: {fileID: 0}
   health: 100
   RangeEnemy: 0
-  CurrentHealth: 0
   timeBetweenAttacks: 2
   alreadyAttacked: 0
   hitBox: {fileID: 2439726117299747972}
   damagePlayer: 25
+  projectile: {fileID: 2169206913558212069, guid: 518758c97a35ebe4aaa66797829608d7,
+    type: 3}
 --- !u!114 &3733077242560371396
 MonoBehaviour:
   m_ObjectHideFlags: 0
