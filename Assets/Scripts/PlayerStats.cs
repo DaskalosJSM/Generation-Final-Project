@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class PlayerStats : MonoBehaviour
 {
-  public float Health = 100;
-  public void TakeDamage(int damage)
-  {
-    Health -= damage;
-  }
+    [Range(0.0f, 200)]
+    public float Health = 100;
+    public void TakeDamage(float damage)
+    {
+        Health -= damage;
+    }
 }
