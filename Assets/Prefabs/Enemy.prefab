@@ -191,6 +191,9 @@ MonoBehaviour:
   damagePlayer: 25
   projectile: {fileID: 2169206913558212069, guid: 518758c97a35ebe4aaa66797829608d7,
     type: 3}
+  prefabCoin: {fileID: 4237417347642638814, guid: e92673345d4d1f04e84d9a7d935840cd,
+    type: 3}
+  coinsCuantity: 8
 --- !u!114 &3733077242560371396
 MonoBehaviour:
   m_ObjectHideFlags: 0

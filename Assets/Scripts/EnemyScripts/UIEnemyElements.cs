@@ -16,13 +16,16 @@ public class UIEnemyElements : MonoBehaviour
     void Update()
     {
         Billboard();
+        healthBar.transform.localScale = new Vector3(enemyStats.health/1000, healthBar.transform.localScale.y, healthBar.transform.localScale.z);
+        if (enemyStats.health<=0) enemyStats.DestroyEnemy();
+    
     }
     void Start()
     {
         Spritecolor = healthBar.GetComponent<SpriteRenderer>();
         Spritecolor.color = Color.green;
     }
-    private void FixedUpdate()
+    public void FixedUpdate()
     {
 
         if (enemyStats.health <= 50) Spritecolor.color = Color.yellow;
@@ -32,7 +35,7 @@ public class UIEnemyElements : MonoBehaviour
     // Update is called once per frame
     void TakeDamage(float damage)
     {
-        healthBar.transform.localScale = new Vector3(healthBar.transform.localScale.x - damage, healthBar.transform.localScale.y, healthBar.transform.localScale.z);
+        enemyStats.health -= damage;
     }
     void Billboard()
     {
