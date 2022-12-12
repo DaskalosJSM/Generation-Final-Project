@@ -10,7 +10,7 @@ PrefabInstance:
     - target: {fileID: 405617397921096017, guid: d83d551340fd72445b12c46863305591,
         type: 3}
       propertyPath: m_Name
-      value: Enemy
+      value: Enemy Distance
       objectReference: {fileID: 0}
     - target: {fileID: 405617397921096024, guid: d83d551340fd72445b12c46863305591,
         type: 3}
@@ -82,6 +82,12 @@ PrefabInstance:
       propertyPath: RangeEnemy
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2978393844938544332, guid: d83d551340fd72445b12c46863305591,
+        type: 3}
+      propertyPath: prefabCoin
+      value: 
+      objectReference: {fileID: 4237417347642638814, guid: e92673345d4d1f04e84d9a7d935840cd,
+        type: 3}
     - target: {fileID: 2978393844938544332, guid: d83d551340fd72445b12c46863305591,
         type: 3}
       propertyPath: CurrentHealth

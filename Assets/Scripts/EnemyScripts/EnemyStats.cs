@@ -9,7 +9,7 @@ public class EnemyStats : MonoBehaviour
 
     [Header("Enemy Stats")]
     [Range(0.0f, 100)]
-    public float health ;
+    public float health;
     public bool RangeEnemy;
 
     [Header("Attacking")]
@@ -18,6 +18,10 @@ public class EnemyStats : MonoBehaviour
     public GameObject hitBox;
     public float damagePlayer;
     public GameObject projectile;
+
+    [Header("ParticleCoins")]
+    public GameObject prefabCoin;
+    public float coinsCuantity;
 
     private void Awake()
     {
@@ -61,8 +65,15 @@ public class EnemyStats : MonoBehaviour
             Invoke(nameof(DestroyEnemy), 1.5f);
         }
     }
-    private void DestroyEnemy()
+    public void DestroyEnemy()
     {
+    
+        for (int i = 0; i < coinsCuantity; i++)
+        {
+            Vector3 posInicial = new Vector3(transform.position.x + Random.Range(-2f, 2f), transform.position.y + Random.Range(0f, 2f), transform.position.z + Random.Range(-2f, 2f));
+            Instantiate(prefabCoin,posInicial,Quaternion.identity);
+            prefabCoin.GetComponent<Rigidbody>().AddForce(Random.Range(-4f, 4f), Random.Range(-4f, 4f), Random.Range(-4f, 4f), ForceMode.Impulse);
+        }
         Destroy(gameObject);
     }
     public void Shoot()

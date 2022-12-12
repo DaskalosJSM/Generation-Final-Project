@@ -17,7 +17,7 @@ public class UIEnemyElements : MonoBehaviour
     {
         Billboard();
         healthBar.transform.localScale = new Vector3(enemyStats.health/1000, healthBar.transform.localScale.y, healthBar.transform.localScale.z);
-        if (enemyStats.health<=0) Destroy(this.gameObject);
+        if (enemyStats.health<=0) enemyStats.DestroyEnemy();
     
     }
     void Start()
@@ -25,7 +25,7 @@ public class UIEnemyElements : MonoBehaviour
         Spritecolor = healthBar.GetComponent<SpriteRenderer>();
         Spritecolor.color = Color.green;
     }
-    private void FixedUpdate()
+    public void FixedUpdate()
     {
 
         if (enemyStats.health <= 50) Spritecolor.color = Color.yellow;
