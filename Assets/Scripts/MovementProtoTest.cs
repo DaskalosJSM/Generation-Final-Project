@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class MovementProtoTest : MonoBehaviour
 {
@@ -9,9 +10,26 @@ public class MovementProtoTest : MonoBehaviour
     public float rotationSpeed;
 
     public float speed;
+
+    [Header("Attacking")]
+    public LayerMask whatIsEnemy;
+    public bool principalPlayer;
+    public bool alreadyAttacked;
+    public float attackRange;
+    public bool enemyInAttackRange;
+    public float timeBetweenAttacks;
+    public GameObject hitBox;
+    public float damageEnenmies;
+    public GameObject projectile;
+    //[Header("Detection")]
+    //public EnemyStats enemyStats;
+    //public GameObject enemy;
     // Update is called once per frame
     void Update()
     {
+        // Atack Range
+        enemyInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsEnemy);
+        if (enemyInAttackRange && alreadyAttacked == false) AttackEnemy();
         //Movement Input
 
         horizontalInput = Input.GetAxis("Horizontal");
@@ -26,5 +44,49 @@ public class MovementProtoTest : MonoBehaviour
         {
             transform.Translate(Vector3.forward * Time.deltaTime * speed * verticalInput, this.transform);
         }
+    }
+    void AttackEnemy()
+    {
+        if (principalPlayer)
+        {
+            ///Attack code here
+            //enemyStats = enemy.GetComponent<EnemyStats>();
+            MeeleEnemyAttack();
+            ///End of attack code
+            alreadyAttacked = true;
+            Invoke(nameof(ResetAttack), timeBetweenAttacks);
+        }
+        if (!principalPlayer)
+        {
+            ///Attack code here
+            //transform.LookAt(enemy.transform);
+            Shoot();
+            ///End of attack code
+            alreadyAttacked = true;
+            Invoke(nameof(ResetAttack), timeBetweenAttacks);
+        }
+    }
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, attackRange);
+    }
+    public void MeeleEnemyAttack()
+    {
+        hitBox.SetActive(true);
+        Invoke("DeactivateHitBox", 1.0f);
+        //enemyStats.TakeDamage(25);
+    }
+    public void Shoot()
+    {
+        Instantiate(projectile, this.transform.position, this.transform.rotation);
+    }
+     public void DeactivateHitBox()
+    {
+        hitBox.SetActive(false);
+    }
+    private void ResetAttack()
+    {
+        alreadyAttacked = false;
     }
 }
