@@ -11,6 +11,7 @@ public class EnemyStats : MonoBehaviour
     [Range(0.0f, 100)]
     public float health;
     public bool RangeEnemy;
+    public Rigidbody rb;
 
     [Header("Attacking")]
     public float timeBetweenAttacks;
@@ -18,6 +19,7 @@ public class EnemyStats : MonoBehaviour
     public GameObject hitBox;
     public float damagePlayer;
     public GameObject projectile;
+    public float trhust = 20;
 
     [Header("ParticleCoins")]
     public GameObject prefabCoin;
@@ -26,6 +28,7 @@ public class EnemyStats : MonoBehaviour
     private void Awake()
     {
         player = GameObject.Find("Player").GetComponent<PlayerStats>();
+        rb = GetComponent<Rigidbody>();
     }
     public void Attack()
 
@@ -59,6 +62,7 @@ public class EnemyStats : MonoBehaviour
     }
     public void TakeDamage(int damage)
     {
+        rb.AddRelativeForce(Vector3.back * trhust, ForceMode.Impulse);
         health -= damage;
         if (health <= 0)
         {
@@ -67,11 +71,11 @@ public class EnemyStats : MonoBehaviour
     }
     public void DestroyEnemy()
     {
-    
+
         for (int i = 0; i < coinsCuantity; i++)
         {
             Vector3 posInicial = new Vector3(transform.position.x + Random.Range(-2f, 2f), transform.position.y + Random.Range(0f, 2f), transform.position.z + Random.Range(-2f, 2f));
-            Instantiate(prefabCoin,posInicial,Quaternion.identity);
+            Instantiate(prefabCoin, posInicial, Quaternion.identity);
             prefabCoin.GetComponent<Rigidbody>().AddForce(Random.Range(-4f, 4f), Random.Range(-4f, 4f), Random.Range(-4f, 4f), ForceMode.Impulse);
         }
         Destroy(gameObject);

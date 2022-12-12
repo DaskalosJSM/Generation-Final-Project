@@ -70,12 +70,17 @@ PrefabInstance:
     - target: {fileID: 405617397921096030, guid: d83d551340fd72445b12c46863305591,
         type: 3}
       propertyPath: sightRange
-      value: 14
+      value: 35
       objectReference: {fileID: 0}
     - target: {fileID: 405617397921096030, guid: d83d551340fd72445b12c46863305591,
         type: 3}
       propertyPath: attackRange
       value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 2978393844938544332, guid: d83d551340fd72445b12c46863305591,
+        type: 3}
+      propertyPath: trhust
+      value: 80
       objectReference: {fileID: 0}
     - target: {fileID: 2978393844938544332, guid: d83d551340fd72445b12c46863305591,
         type: 3}
