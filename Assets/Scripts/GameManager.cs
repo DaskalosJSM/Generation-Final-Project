@@ -11,6 +11,7 @@ public enum GameState
     Game,
     Village,
     Credits,
+    GameOver,
     Store
 }
 
@@ -58,6 +59,10 @@ public class GameManager : MonoBehaviour
     {
         SetGameState(GameState.Store);
     }
+     public void GameOver()
+    {
+        SetGameState(GameState.GameOver);
+    }
 
     public void SetGameState(GameState newGameState)
     {
@@ -91,6 +96,11 @@ public class GameManager : MonoBehaviour
         {
             //TODO: colocar la logica de la scena Store
             SceneManager.LoadScene("Store");
+        }
+        else if (newGameState == GameState.GameOver)
+        {
+            //TODO: colocar la logica de la scena Store
+            SceneManager.LoadScene("GameOver");
         }
     }
     public void Pausa()
