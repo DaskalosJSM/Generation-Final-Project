@@ -28,6 +28,9 @@ public class EnemyStats : MonoBehaviour
     private void Awake()
     {
         player = GameObject.Find("Player").GetComponent<PlayerStats>();
+    }
+    private void Start()
+    {
         rb = GetComponent<Rigidbody>();
     }
     public void Attack()
@@ -63,6 +66,15 @@ public class EnemyStats : MonoBehaviour
     public void TakeDamage(int damage)
     {
         rb.AddRelativeForce(Vector3.back * trhust, ForceMode.Impulse);
+        health -= damage;
+        if (health <= 0)
+        {
+            Invoke(nameof(DestroyEnemy), 1.5f);
+        }
+    }
+    public void TakebulletDamage(int damage)
+    {
+        rb.AddRelativeForce(Vector3.back * trhust / 10, ForceMode.Impulse);
         health -= damage;
         if (health <= 0)
         {

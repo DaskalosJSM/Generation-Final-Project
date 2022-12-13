@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 1619655950215331864}
   - component: {fileID: 5741072692661695452}
   m_Layer: 0
-  m_Name: Projectile
+  m_Name: Projectile Ally
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -131,4 +131,4 @@ MonoBehaviour:
   coutdown: 5
   speed: 15
   damagePlayer: 25
-  ally: 0
+  ally: 1

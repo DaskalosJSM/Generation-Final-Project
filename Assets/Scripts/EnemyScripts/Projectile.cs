@@ -9,6 +9,7 @@ public class Projectile : MonoBehaviour
     public float speed = 20f;
     public float damagePlayer = 25;
     private Rigidbody rb;
+    public bool ally;
     // Start is called before the first frame update
     void Start()
     {
@@ -27,10 +28,15 @@ public class Projectile : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player" ) && !ally)
         {
             PlayerStats player = other.gameObject.GetComponent<PlayerStats>();
             player.TakeDamage(damagePlayer);
+            Destroy(gameObject);
+        }
+        if (other.CompareTag("Enemy") && ally)
+        {
+            other.GetComponent<EnemyStats>().TakebulletDamage(5);
             Destroy(gameObject);
         }
     }

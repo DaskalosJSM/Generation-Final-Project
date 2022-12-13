@@ -21,6 +21,7 @@ public class Turret : MonoBehaviour
     public LineRenderer linerenderer;
 
     public float slowPct = 0.5f;
+    public GameObject nearestEnemy = null;
 
     [Header("Unity Setup Fields")]
 
@@ -40,7 +41,6 @@ public class Turret : MonoBehaviour
     {
         GameObject[] enemies = GameObject.FindGameObjectsWithTag(enemyTag);
         float shortestDistance = Mathf.Infinity;
-        GameObject nearestEnemy = null;
 
         foreach (GameObject enemy in enemies)
         {
@@ -82,6 +82,7 @@ public class Turret : MonoBehaviour
 
     void Shoot()
     {
+        transform.LookAt(nearestEnemy.gameObject.transform);
         GameObject bulletGo = (GameObject)Instantiate(bulletPrefab, firepoint.position, firepoint.rotation);
         Bullet1 bullet = bulletGo.GetComponent<Bullet1>();
 
