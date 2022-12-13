@@ -195,6 +195,8 @@ MonoBehaviour:
   trhust: 50
   prefabCoin: {fileID: 4237417347642638814, guid: e92673345d4d1f04e84d9a7d935840cd,
     type: 3}
+  prefabLife: {fileID: 8682942428357586855, guid: 9457991d18e9b2742ab8a84171cdd5b7,
+    type: 3}
   coinsCuantity: 8
 --- !u!114 &3733077242560371396
 MonoBehaviour:

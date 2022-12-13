@@ -23,6 +23,7 @@ public class EnemyStats : MonoBehaviour
 
     [Header("ParticleCoins")]
     public GameObject prefabCoin;
+     public GameObject prefabLife;
     public float coinsCuantity;
 
     private void Awake()
@@ -83,7 +84,12 @@ public class EnemyStats : MonoBehaviour
     }
     public void DestroyEnemy()
     {
-
+        int index;
+        index = Random.Range(1,5);
+        if (index==3)
+        {
+            Instantiate(prefabLife, this.transform.position, Quaternion.identity);
+        }
         for (int i = 0; i < coinsCuantity; i++)
         {
             Vector3 posInicial = new Vector3(transform.position.x + Random.Range(-2f, 2f), transform.position.y + Random.Range(0f, 2f), transform.position.z + Random.Range(-2f, 2f));

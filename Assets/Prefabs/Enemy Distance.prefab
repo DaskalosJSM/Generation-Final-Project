@@ -95,8 +95,18 @@ PrefabInstance:
         type: 3}
     - target: {fileID: 2978393844938544332, guid: d83d551340fd72445b12c46863305591,
         type: 3}
+      propertyPath: damagePlayer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2978393844938544332, guid: d83d551340fd72445b12c46863305591,
+        type: 3}
       propertyPath: CurrentHealth
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2978393844938544332, guid: d83d551340fd72445b12c46863305591,
+        type: 3}
+      propertyPath: timeBetweenAttacks
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d83d551340fd72445b12c46863305591, type: 3}

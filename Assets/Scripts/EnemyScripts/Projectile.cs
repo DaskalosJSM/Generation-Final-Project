@@ -7,7 +7,7 @@ public class Projectile : MonoBehaviour
     public float Lifetime = 8f;
     public float coutdown = 5f;
     public float speed = 20f;
-    public float damagePlayer = 25;
+    public float damagePlayer = 5;
     private Rigidbody rb;
     public bool ally;
     // Start is called before the first frame update
@@ -28,15 +28,16 @@ public class Projectile : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
+        PlayerStats player = other.gameObject.GetComponent<PlayerStats>();
+        
         if (other.CompareTag("Player" ) && !ally)
         {
-            PlayerStats player = other.gameObject.GetComponent<PlayerStats>();
             player.TakeDamage(damagePlayer);
             Destroy(gameObject);
         }
         if (other.CompareTag("Enemy") && ally)
         {
-            other.GetComponent<EnemyStats>().TakebulletDamage(5);
+            other.GetComponent<EnemyStats>().TakebulletDamage(10);
             Destroy(gameObject);
         }
     }
