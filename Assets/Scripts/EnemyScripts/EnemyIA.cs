@@ -24,8 +24,11 @@ public class EnemyIA : MonoBehaviour
     public bool playerInSightRange, playerInAttackRange;
     private void Awake()
     {
-        player = GameObject.Find("Player").transform;
         agent = GetComponent<NavMeshAgent>();
+    }
+    private void Start()
+    {
+        player = GameObject.Find("Player").transform;
     }
     private void Update()
     {

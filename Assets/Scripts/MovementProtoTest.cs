@@ -13,7 +13,6 @@ public class MovementProtoTest : MonoBehaviour
 
     [Header("Attacking")]
     public LayerMask whatIsEnemy;
-    public bool principalPlayer;
     public bool alreadyAttacked;
     public float attackRange;
     public bool enemyInAttackRange;
@@ -47,24 +46,13 @@ public class MovementProtoTest : MonoBehaviour
     }
     void AttackEnemy()
     {
-        if (principalPlayer)
-        {
             ///Attack code here
             //enemyStats = enemy.GetComponent<EnemyStats>();
+            
             MeeleEnemyAttack();
             ///End of attack code
             alreadyAttacked = true;
             Invoke(nameof(ResetAttack), timeBetweenAttacks);
-        }
-        if (!principalPlayer)
-        {
-            ///Attack code here
-            //transform.LookAt(enemy.transform);
-            Shoot();
-            ///End of attack code
-            alreadyAttacked = true;
-            Invoke(nameof(ResetAttack), timeBetweenAttacks);
-        }
     }
     private void OnDrawGizmosSelected()
     {
@@ -76,10 +64,6 @@ public class MovementProtoTest : MonoBehaviour
         hitBox.SetActive(true);
         Invoke("DeactivateHitBox", 1.0f);
         //enemyStats.TakeDamage(25);
-    }
-    public void Shoot()
-    {
-        Instantiate(projectile, this.transform.position, this.transform.rotation);
     }
      public void DeactivateHitBox()
     {
