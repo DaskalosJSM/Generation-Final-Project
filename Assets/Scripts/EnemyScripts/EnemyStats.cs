@@ -27,10 +27,10 @@ public class EnemyStats : MonoBehaviour
 
     private void Awake()
     {
-        player = GameObject.Find("Player").GetComponent<PlayerStats>();
     }
     private void Start()
     {
+        player = GameObject.Find("Player").GetComponent<PlayerStats>();
         rb = GetComponent<Rigidbody>();
     }
     public void Attack()
